@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 
 class IndexView(TemplateView):
-    '''link template file Home.html to view
+    '''This class based view links template file Home.html to view
     
     '''
     
@@ -23,7 +23,12 @@ class IndexView(TemplateView):
     context_object_name = 'recipe_list'
     
     def get_context_data(self, **kwargs):
-        
+            '''
+            This method returns a list of two recipe objects
+            :returns: context variable containing two recipe objects
+
+            :rtype: list
+            '''
             context = super().get_context_data(**kwargs)
             context['recipe_list'] = Recipe.objects.all()[:2]
             return context  
@@ -31,17 +36,22 @@ class IndexView(TemplateView):
                  
 
 class ListView(generic.ListView):
-    '''link template file recipelist.html to view'''
+    '''This class based view links template file recipelist.html to view'''
     
     template_name = 'recipebook/recipelist.html'
     context_object_name = 'recipe_list'
     
     def get_queryset(self):
         """
+        This queryset method returns a list of recipe objects to be listed
+            :returns: all recipe objects
+
+            :rtype: list
         """
         return Recipe.objects.all()
 # recipe
 class DetailView(generic.DetailView):
+    '''This class based view links template file recipe.html to view'''
     model = Recipe
     template_name = 'recipebook/recipe.html'
     context_object_name = 'recipe'
