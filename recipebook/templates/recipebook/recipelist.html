@@ -1,0 +1,22 @@
+{% extends "recipebook/index.html" %}
+{% block list %}
+<div class="container-fluid center">
+
+<div class="row center">
+    <div class="col-2"></div>
+    <div class="col-8" ><h2>RECIPE LIST</h2></div>
+    <div class="col-2" ></div> 
+</div>
+        {% for recipe in recipe_list %}
+        <div class="row center">
+            
+            <li class="center" style="background-color:rgb(200, 201, 239)">
+                <a href="{% url 'recipebook:recipe' recipe.id %}">{{ recipe.title }}</a>
+            </li>
+        </div>   
+        
+            
+        {% endfor %}
+    </div>
+{% endblock %}
+

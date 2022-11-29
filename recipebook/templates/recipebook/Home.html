@@ -1,0 +1,40 @@
+{% extends "recipebook/index.html" %}
+
+{% block home %}
+
+{% if user.is_authenticated %}  
+<div class="container-fluid center">
+<div class="row center">
+  <h2>Recommeded Recipes</h2>
+</div>
+<br>
+</div>
+
+{% for recipe in recipe_list %}
+<div class="container-fluid center">
+
+  <div class="row ">
+    
+    <div class="col-2" style="background-color:rgb(200, 201, 239)"></div>
+    <div class="col-4" style="background-color:rgb(200, 201, 239)">
+      
+      <div class="hover01">  
+          <div>
+            <figure><img src="{{ recipe.pic.url }}" /></figure>
+          </div> 
+      </div>
+    
+          <a href="{% url 'recipebook:recipe' recipe.id %}">{{ recipe.title }}</a>
+        
+    </div>
+    <div class="col-6" style="background-color:rgb(200, 201, 239)">
+      <h3>Ingredients</h3>
+      <p>{{ recipe.ingredients }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<meta http-equiv="Refresh" content="0; url = {% url 'user_auth:login' %}" />
+{% endif %}
+{% endblock %}
