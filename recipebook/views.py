@@ -15,7 +15,9 @@ from django.contrib.auth.decorators import login_required
 
 
 class IndexView(TemplateView):
-    '''link template file Home.html to view'''
+    '''link template file Home.html to view
+    
+    '''
     
     template_name = 'recipebook/Home.html'
     context_object_name = 'recipe_list'
