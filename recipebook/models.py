@@ -3,10 +3,6 @@ from django.db import models
 class Recipe(models.Model):
     '''
     Recipe layout in database
-        - Title: recipe name
-        - Image: recipe image
-        - Ingredients: list
-        - Directions: step by step list
     :param models.Model: The models class
 
     String return for recipe
